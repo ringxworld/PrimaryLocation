@@ -20,7 +20,8 @@ public class Main {
         vm.findHome(temp);
 
         //result gives obj containing lat/long
-        vm.getMostVisitedRegion();
+        GeoLocation g = vm.getMostVisitedRegion();
+        System.out.println("Lat:" + g.getLatitude() + ",Long:" + g.getLongitude());
     }
 
 }
