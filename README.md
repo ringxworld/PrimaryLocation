@@ -1,6 +1,8 @@
 # PrimaryLocation
 Find Home based on GPS coordinates and Time stamp data
 
+[![GitHub issues](https://img.shields.io/github/issues/Wijkuy/PrimaryLocation.svg?style=flat-square)](https://github.com/Wijkuy/PrimaryLocation/issues)
+[![Travis](https://img.shields.io/travis/Wijkuy/PrimaryLocation.svg?style=flat-square)](https://travis-ci.org/Wijkuy/PrimaryLocation/)
 
 ## Getting Started
 

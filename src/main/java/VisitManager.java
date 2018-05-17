@@ -11,16 +11,18 @@ public class VisitManager {
     HashMap<GeoLocation, Timer> temp = new HashMap<>();
 
 
-    public void findHome(Visit... visits) {
+    public GeoLocation findHome(Visit... visits) {
         for (Visit v : visits) {
-
-            if (temp.containsKey(v.getGeoLocation())) {
-                temp.get(v.getGeoLocation()).setTimeElapsed(v.getDeparture_time_local().getTime() - v.getArrival_time_local().getTime());
-            } else {
-                temp.put(v.getGeoLocation(), new Timer());
-                temp.get(v.getGeoLocation()).setTimeElapsed(v.getDeparture_time_local().getTime() - v.getArrival_time_local().getTime());
+            if (this.locationAtNight(v.getArrival_time_local(), v.getDeparture_time_local())) {
+                if (temp.containsKey(v.getGeoLocation())) {
+                    temp.get(v.getGeoLocation()).setTimeElapsed(v.getDeparture_time_local().getTime() - v.getArrival_time_local().getTime());
+                } else {
+                    temp.put(v.getGeoLocation(), new Timer());
+                    temp.get(v.getGeoLocation()).setTimeElapsed(v.getDeparture_time_local().getTime() - v.getArrival_time_local().getTime());
+                }
             }
         }
+        return getMostVisitedRegion();
     }
 
 
@@ -34,6 +36,10 @@ public class VisitManager {
         System.out.println(original.overlaps(test));
         //System.out.println(test.overlaps(original));
         return false;
+    }
+
+    public GeoLocation getMostVisitedRegion() {
+        return temp.entrySet().stream().max((entry1, entry2) -> entry1.getValue().getTimeElapsed() > entry2.getValue().getTimeElapsed() ? 1 : -1).get().getKey();
     }
 
     public long getHighestValue() {
