@@ -64,6 +64,7 @@ public class StepDefinition {
         Date badvalue1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 11:01:01");
         Date pass = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 21:01:01");
         Date pass1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 01:01:01");
+        System.out.println("Night time Identifier test");
         vm.locationAtNight(end, start);
         vm.locationAtNight(badvalue, badvalue1);
         vm.locationAtNight(pass, pass1);
@@ -81,7 +82,7 @@ public class StepDefinition {
                 , new Visit(new GeoLocation(1.00001f, 1.00001f), "2000/01/01 21:01:01", "2000/01/02 03:01:01")
                 , new Visit(new GeoLocation(1.0001f, 1.0001f), "2000/01/03 21:01:01", "2000/01/04 07:01:01")};
         multnight.findHome(temp);
-        Assert.assertTrue(multnight.getKeySet().size()>0);
+        Assert.assertTrue(multnight.getKeySet().size() > 0);
     }
 
     @Then("^The most visited one is my home$")

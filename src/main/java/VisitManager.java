@@ -10,7 +10,6 @@ public class VisitManager {
 
     HashMap<GeoLocation, Timer> temp = new HashMap<>();
 
-
     public void findHome(Visit... visits) {
         for (Visit v : visits) {
             if (this.locationAtNight(v.getArrival_time_local(), v.getDeparture_time_local())) {
@@ -35,7 +34,6 @@ public class VisitManager {
         }
     }
 
-
     public boolean locationAtNight(Date begin, Date end) {
         LocalTime beginnning = Instant.ofEpochMilli(begin.getTime()).atZone(ZoneId.systemDefault()).toLocalTime();
         LocalTime ending = Instant.ofEpochMilli(end.getTime()).atZone(ZoneId.systemDefault()).toLocalTime();
@@ -44,7 +42,7 @@ public class VisitManager {
         LocalTime stop = LocalTime.parse("08:00:00");
         LocalTimeRange test = new LocalTimeRange(start, stop);
         return original.overlaps(test);
-        //System.out.println(test.overlaps(original));
+
     }
 
     public GeoLocation getMostVisitedRegion() {
