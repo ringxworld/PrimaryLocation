@@ -14,7 +14,7 @@ If maven is having trouble loading the referenced libraries open the pom xml and
 
 
 ```
-[user@desktop ~]$ java Main "String to encrypt here"
+[user@desktop ~]$ java Main
 ```
 
 ### Installing
