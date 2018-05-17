@@ -18,6 +18,7 @@ public class LocalTimeRange {
                 || isBetween(other.to, this.from, this.to)
                 || isBetween(this.from, other.from, other.to)
                 || isBetween(this.to, other.from, other.to);
+
     }
 
     private static boolean isBetween(LocalTime t, LocalTime from, LocalTime to) {
@@ -26,5 +27,6 @@ public class LocalTimeRange {
         } else { // spans to the next day.
             return from.isBefore(t) || t.isBefore(to);
         }
+
     }
 }

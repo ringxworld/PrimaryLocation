@@ -14,3 +14,8 @@ Feature: Test Visits
   Scenario: Keep track of times after 8pm and before 8am
     Given I have a night time value
     Then Identify that it is valid
+
+  @HandleMultipleNightLocations
+  Scenario: Find the most visited night time location
+    Given I visit multiple locations at night
+    Then The most visited one is my home

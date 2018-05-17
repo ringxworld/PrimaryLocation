@@ -64,9 +64,30 @@ public class StepDefinition {
         Date badvalue1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 11:01:01");
         Date pass = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 21:01:01");
         Date pass1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 01:01:01");
-        vm.locationAtNight(end,start);
-        vm.locationAtNight(badvalue,badvalue1);
-        vm.locationAtNight(pass,pass1);
+        vm.locationAtNight(end, start);
+        vm.locationAtNight(badvalue, badvalue1);
+        vm.locationAtNight(pass, pass1);
+    }
+
+    VisitManager multnight = new VisitManager();
+
+    @Given("^I visit multiple locations at night$")
+    public void i_visit_multiple_locations_at_night() throws Throwable {
+        Visit[] temp = {
+                new Visit(new GeoLocation(0, 0), "2000/01/02 01:01:01", "2000/01/02 02:01:01")
+                , new Visit(new GeoLocation(0.00001f, 0.00001f), "2000/01/03 01:01:01", "2000/01/03 03:01:01")
+                , new Visit(new GeoLocation(0.0001f, 0.0001f), "2000/01/04 01:01:01", "2000/01/04 04:01:01")
+                , new Visit(new GeoLocation(1, 1), "1999/12/31 01:01:01", "2000/01/01 02:01:01")
+                , new Visit(new GeoLocation(1.00001f, 1.00001f), "2000/01/01 21:01:01", "2000/01/02 03:01:01")
+                , new Visit(new GeoLocation(1.0001f, 1.0001f), "2000/01/03 21:01:01", "2000/01/04 07:01:01")};
+        multnight.findHome(temp);
+        Assert.assertTrue(multnight.getKeySet().size()>0);
+    }
+
+    @Then("^The most visited one is my home$")
+    public void the_most_visited_one_is_my_home() throws Throwable {
+        Assert.assertTrue(multnight.getMostVisitedRegion().getLatitude() == 1 && multnight.getMostVisitedRegion().getLongitude() == 1);
+
     }
 
 }
