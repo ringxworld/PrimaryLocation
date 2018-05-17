@@ -1,4 +1,4 @@
-# Smartedge
+# PrimaryLocation
 Find Home based on GPS coordinates and Time stamp data
 
 
