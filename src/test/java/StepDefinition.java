@@ -59,15 +59,24 @@ public class StepDefinition {
     public void identify_that_it_is_valid() throws Throwable {
         vm = new VisitManager();
         Date start = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 19:01:01");
-        Date end = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 09:01:01");
+        Date end = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 07:01:01");
         Date badvalue = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 10:01:01");
         Date badvalue1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 11:01:01");
         Date pass = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 21:01:01");
         Date pass1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 01:01:01");
-        System.out.println("Night time Identifier test");
-        vm.locationAtNight(end, start);
-        vm.locationAtNight(badvalue, badvalue1);
-        vm.locationAtNight(pass, pass1);
+
+        Date under = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 19:01:01");
+        Date over = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2000/01/02 09:01:01");
+
+        //System.out.println("Night time Identifier test");
+        //System.out.println(vm.locationAtNight(end, start));
+        //System.out.println(vm.locationAtNight(badvalue, badvalue1));
+        //System.out.println(vm.locationAtNight(pass, pass1));
+        //System.out.println(vm.locationAtNight(under, over));
+        Assert.assertTrue(vm.locationAtNight(end, start));
+        Assert.assertTrue(!vm.locationAtNight(badvalue, badvalue1));
+        Assert.assertTrue(vm.locationAtNight(pass, pass1));
+        Assert.assertTrue(vm.locationAtNight(under, over));
     }
 
     VisitManager multnight = new VisitManager();

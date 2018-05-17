@@ -2,6 +2,7 @@ import java.time.Instant;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.spi.CalendarDataProvider;
 
 /*
 Author: Shawn
@@ -41,6 +42,17 @@ public class VisitManager {
         LocalTime start = LocalTime.parse("20:00:00");
         LocalTime stop = LocalTime.parse("08:00:00");
         LocalTimeRange test = new LocalTimeRange(start, stop);
+
+        if (!original.overlaps(test)) {
+            Calendar cal = Calendar.getInstance();
+            Calendar cal1 = Calendar.getInstance();
+            cal.setTime(begin);
+            cal1.setTime(end);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            int day1 = cal1.get(Calendar.DAY_OF_MONTH);
+
+            return beginnning.isBefore(start) && stop.isAfter(stop) && day != day1;
+        }
         return original.overlaps(test);
 
     }
