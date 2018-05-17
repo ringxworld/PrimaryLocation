@@ -1,9 +1,5 @@
 # Smartedge
-My implementation of the Smartedge technical challenge 
-
-
-[![GitHub issues](https://img.shields.io/github/issues/Wijkuy/Smartedge.svg?style=flat-square)](https://github.com/Wijkuy/Smartedge/issues)
-[![Travis](https://img.shields.io/travis/Wijkuy/Smartedge.svg?style=flat-square)](https://travis-ci.org/Wijkuy/Smartedge/)
+Find Home based on GPS coordinates and Time stamp data
 
 
 ## Getting Started
@@ -33,7 +29,6 @@ From there your ready to run this project
 Tests are ran with Travis-ci with mvn cobertura:cobertura command. It runs tests continuously every time there is a new commit.
 
 ## Built With
-* [Org.json](https://github.com/stleary/JSON-java) - Json string format builder
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [junit4](https://junit.org/junit4/) - Unit testing
 * [cucumber-java](https://cucumber.io/) - Behavior driven testing
